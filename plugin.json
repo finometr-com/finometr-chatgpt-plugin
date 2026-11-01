@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "finometr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ask ChatGPT about your Finometr cash flow — balances, transactions, the forecast, budgets and a daily brief — and let it add accounts, transactions and bank statements.",
   "author": {
     "name": "FINOMETR LTD",
@@ -25,7 +25,7 @@
       "interface": {
         "displayName": "Finometr",
         "shortDescription": "Cash flow, forecast, budgets",
-        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, and spending against the month's budget. Finometr can also add a manual account, manual or planned transactions, a business unit or a month's target, and import a bank statement you share. It never moves money and never deletes anything; bank connections are made in the Finometr app.",
+        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, and spending against the month's budget. Finometr can also add a manual account, manual or planned transactions, a business unit or a month's target, and import a bank statement you share. It never moves money and never removes bank transactions; what you added by hand can be removed and restored; bank connections are made in the Finometr app.",
         "developerName": "FINOMETR LTD",
         "category": "Finance",
         "capabilities": [
@@ -79,16 +79,18 @@
               "prompt": "Plan a payment of 250 EUR called \"Printer service\" on the Studio current account for next Friday.",
               "tools_triggered": "list_accounts, add_planned_transaction",
               "expected_behavior": "States what it will add and where, then adds a planned payment of -250 EUR named Printer service on the Studio current account for that date and confirms it."
+            },
+            {
+              "description": "Remove a manual transaction after confirmation, and restore it",
+              "prompt": "Delete the \"Bank fees\" transaction, then bring it back.",
+              "tools_triggered": "search_transactions, delete_manual_transaction, restore_transaction",
+              "expected_behavior": "Names the row (Bank fees, -18.50 EUR) and the connected account, removes it after the user's yes, then restores it and confirms it is back."
             }
           ],
           "negative": [
             {
               "description": "Moving money is not supported: Finometr has no payment tool",
               "prompt": "Transfer 500 EUR from the Studio current account to M. Weber."
-            },
-            {
-              "description": "Deleting is not supported: no tool deletes a record; the user is pointed to the Finometr app",
-              "prompt": "Delete the \"Bank fees\" transaction."
             },
             {
               "description": "Bank credentials are never taken in the chat; banks are connected in the Finometr app",
