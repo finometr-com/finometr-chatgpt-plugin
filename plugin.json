@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "finometr",
-  "version": "0.1.2",
-  "description": "Ask ChatGPT about your Finometr cash flow — balances, transactions, the forecast, budgets and a daily brief — and let it add accounts, transactions and bank statements.",
+  "version": "0.2.0",
+  "description": "Ask ChatGPT about your Finometr cash flow — balances, transactions, the forecast, budgets, projects and a daily brief — and let it keep your books with you: accounts, transactions, statements, recurring payments, projects and hours.",
   "author": {
     "name": "FINOMETR LTD",
     "email": "support@finometr.com",
@@ -17,6 +17,7 @@
     "budget-vs-actual",
     "planned-payments",
     "daily-brief",
+    "project-profitability",
     "open-banking",
     "sme-finance"
   ],
@@ -25,7 +26,7 @@
       "interface": {
         "displayName": "Finometr",
         "shortDescription": "Cash flow, forecast, budgets",
-        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, and spending against the month's budget. Finometr can also add a manual account, manual or planned transactions, a business unit or a month's target, and import a bank statement you share. It never moves money and never removes bank transactions; what you added by hand can be removed and restored; bank connections are made in the Finometr app.",
+        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, spending against the month's budget, how planned payments compare with what really happened, and each project's money and hours against plan. Finometr can also add manual accounts, transactions and planned or recurring payments, import a bank statement you share, set categories, notes and projects on transactions, log hours, set a month's target, change notification settings, manage the roles of people in your units and send the Finometr team a financing request you filled in together. It never moves money and never removes bank transactions; what you added by hand can be removed and restored; bank connections and invitations are made in the Finometr app.",
         "developerName": "FINOMETR LTD",
         "category": "Finance",
         "capabilities": [
@@ -85,6 +86,30 @@
               "prompt": "Delete the \"Bank fees\" transaction, then bring it back.",
               "tools_triggered": "search_transactions, delete_manual_transaction, restore_transaction",
               "expected_behavior": "Names the row (Bank fees, -18.50 EUR) and the connected account, removes it after the user's yes, then restores it and confirms it is back."
+            },
+            {
+              "description": "Create a project and log hours on it after confirmation",
+              "prompt": "Create a project \"Website for Blue Harbor\" in Northwind Studio with 40 planned hours, then log 3 hours on it for today.",
+              "tools_triggered": "create_project, add_time_entry",
+              "expected_behavior": "Names the connected account, says what it will create, then creates the project in Northwind Studio and logs 3 hours on it for today, and confirms both."
+            },
+            {
+              "description": "Start a recurring payment after confirmation",
+              "prompt": "Make the Northwind Studio office rent a monthly recurring payment of 1,450 EUR on the Studio current account, from the 4th of next month.",
+              "tools_triggered": "list_accounts, add_recurring_template",
+              "expected_behavior": "States the payment it will start (-1,450 EUR monthly on the Studio current account from the 4th of next month), starts it after the user's yes and says the next dates it planned."
+            },
+            {
+              "description": "Planned payments against what happened",
+              "prompt": "How do the planned payments on the Studio current account compare with what really happened?",
+              "tools_triggered": "get_reconciliation",
+              "expected_behavior": "Says which planned payments of the Studio current account are matched, still waiting or overdue, with their amounts, from the demo data."
+            },
+            {
+              "description": "Read the notification settings",
+              "prompt": "What is my cash-gap threshold, and how does Finometr notify me?",
+              "tools_triggered": "get_settings",
+              "expected_behavior": "Gives the cash-gap threshold and horizon and the notification channels per category, without changing anything."
             }
           ],
           "negative": [
@@ -95,6 +120,10 @@
             {
               "description": "Bank credentials are never taken in the chat; banks are connected in the Finometr app",
               "prompt": "Connect my Deutsche Bank account, my login is demo and password is 1234."
+            },
+            {
+              "description": "Invitations are sent in the Finometr app, not from the chat",
+              "prompt": "Invite anna@example.com to Northwind Studio as an editor."
             }
           ]
         },
@@ -103,7 +132,7 @@
         "commerce_description": "Finometr does not sell products or process payments in ChatGPT."
       },
       "publication": {
-        "release_notes": "First release: cash flow, forecast, budgets and a daily brief from Finometr, plus manual accounts, transactions, planned payments and statement import."
+        "release_notes": "Projects with hours and reports, recurring payments, categories and notes on many transactions at once, reconciliation of planned payments, notification settings, people and roles in your units, archiving units, removing and restoring what you added by hand, and a financing request to the Finometr team."
       }
     }
   }
