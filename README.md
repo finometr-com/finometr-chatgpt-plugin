@@ -1,10 +1,10 @@
 # Finometr plugin for ChatGPT
 
 The package for the ChatGPT plugin directory. It connects ChatGPT to the
-Finometr MCP server at `https://finometr.com/mcp` — cash flow, accounts,
-transactions, planned payments, budgets and a daily brief for SMEs — with
-OAuth: ChatGPT registers through its client metadata document (CIMD), so no
-client id or secret lives here.
+Finometr MCP server at `https://finometr.com/mcp` (cash flow, accounts,
+transactions, planned payments, budgets and a daily brief for small
+businesses, freelancers and households) with OAuth: ChatGPT registers through
+its client metadata document (CIMD), so no client id or secret lives here.
 
 - `plugin.json`: the manifest, the directory listing under
   `extensions.com.openai.interface`, and the review material (test cases
