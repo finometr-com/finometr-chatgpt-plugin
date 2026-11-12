@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "finometr",
-  "version": "0.2.0",
-  "description": "Ask ChatGPT about your Finometr cash flow — balances, transactions, the forecast, budgets, projects and a daily brief — and let it keep your books with you: accounts, transactions, statements, recurring payments, projects and hours.",
+  "version": "0.2.1",
+  "description": "Ask ChatGPT about your Finometr cash flow (balances, transactions, the forecast, budgets, projects and a daily brief) and let it keep your books with you: accounts, transactions, statements, recurring payments, categories, projects and hours.",
   "author": {
     "name": "FINOMETR LTD",
     "email": "support@finometr.com",
@@ -26,7 +26,7 @@
       "interface": {
         "displayName": "Finometr",
         "shortDescription": "Cash flow, forecast, budgets",
-        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, spending against the month's budget, how planned payments compare with what really happened, and each project's money and hours against plan. Finometr can also add manual accounts, transactions and planned or recurring payments, import a bank statement you share, set categories, notes and projects on transactions, log hours, set a month's target, change notification settings, manage the roles of people in your units and send the Finometr team a financing request you filled in together. It never moves money and never removes bank transactions; what you added by hand can be removed and restored; bank connections and invitations are made in the Finometr app.",
+        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, spending against the month's budget, how planned payments compare with what really happened, and each project's money and hours against plan. Finometr can also add manual accounts, transactions and planned or recurring payments, import a bank statement you share, set categories, notes and projects on transactions, create custom categories inside the standard ones on Pro and higher, log hours, set a month's target, change notification settings, manage the roles of people in your units and send the Finometr team a financing request you filled in together. It never moves money and never removes or edits bank transactions, only their category and note. Removing is soft: transactions and accounts you added by hand, projects, recurring payments, time entries and shared copies can be restored. Bank connections and invitations are made in the Finometr app.",
         "developerName": "FINOMETR LTD",
         "category": "Finance",
         "capabilities": [
@@ -119,7 +119,7 @@
             },
             {
               "description": "Bank credentials are never taken in the chat; banks are connected in the Finometr app",
-              "prompt": "Connect my Deutsche Bank account, my login is demo and password is 1234."
+              "prompt": "Connect my bank account, my login is demo and password is 1234."
             },
             {
               "description": "Invitations are sent in the Finometr app, not from the chat",
@@ -132,7 +132,7 @@
         "commerce_description": "Finometr does not sell products or process payments in ChatGPT."
       },
       "publication": {
-        "release_notes": "Projects with hours and reports, recurring payments, categories and notes on many transactions at once, reconciliation of planned payments, notification settings, people and roles in your units, archiving units, removing and restoring what you added by hand, and a financing request to the Finometr team."
+        "release_notes": "Custom categories inside the standard ones on Pro and higher: create, rename, archive and restore them, and move earlier rows with set_category (a dry run first, up to 200 rows a call). Transaction searches take up to 366 days; a longer period is clipped to its last 366 days with a note. Tool descriptions brought up to date with the server."
       }
     }
   }
