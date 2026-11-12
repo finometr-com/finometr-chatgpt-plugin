@@ -31,6 +31,10 @@ starts with 30 days of Pro, no credit card required.
   to 366 days. A longer one is clipped to its last 366 days, and the answer's
   note says so. Spending by category and budget targets cover one calendar
   month per call; the cash-flow forecast looks 30, 60 or 90 days ahead.
+- **Search totals**: a search with a text, category, account or amount
+  filter gives the net, money out and money in over every matching row of
+  the period in its summary, not only the page; without a filter it sums
+  the page.
 - **Custom categories**: on Pro and higher (the plan of the unit's owner), a
   unit can have custom categories inside the standard ones, for spending a
   standard category lumps together. Finometr's AI sorts new transactions into
@@ -62,7 +66,8 @@ starts with 30 days of Pro, no credit card required.
   (`create_category`, `update_category`, `archive_category`,
   `restore_category`), and the skills describe moving earlier rows with
   `set_category`.
-- The skills describe the 366-day period limit, the lists of removed rows
+- The skills describe the 366-day period limit, the search totals over
+  every matching row, the lists of removed rows
   and accounts with their restore tools, and the Read and Write choice at
   sign-in.
 - The tool descriptions ChatGPT freezes at submission are the server's
