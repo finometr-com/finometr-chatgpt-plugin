@@ -48,8 +48,9 @@ starts with 30 days of Pro, no credit card required.
   can be removed and brought back: `list_removed_transactions`,
   `list_removed_accounts` and `list_removed_projects` list what can come
   back, and a `restore_*` tool brings each back. Custom categories are
-  archived, not deleted. Bank transactions are never removed or edited; only
-  their category and note change. Taking a person out of a unit has no
+  archived, not deleted. Bank transactions are never removed, and their
+  amounts and texts stay as the bank reported them; their category, note,
+  project and unit can change. Taking a person out of a unit has no
   restore: coming back takes a new invitation from the Finometr app.
 - **Projects, hours and people**: projects with planned and actual income,
   costs and hours, time entries, and the people of the user's units with
