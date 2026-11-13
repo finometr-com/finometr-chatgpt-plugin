@@ -13,7 +13,7 @@ Use the Finometr app of this plugin; its tools are the Finometr tools named belo
 
 - If Finometr asks the user to sign in, ask them to connect Finometr from the plugin and sign in on the page that opens. Do not use another Finometr connection instead: it can belong to another Finometr account.
 - On Finometr's sign-in page the user ticks Read, Write or both. With Read alone, the write tools are refused: if the user wants a change, ask them to connect Finometr from the plugin again and tick Write.
-- If the user has no Finometr account yet, they create one on the sign-in page that opens when they connect. Every new account starts with 30 days of Pro, no credit card required; the connection to an assistant is part of Pro and higher plans.
+- If the user has no Finometr account yet, they create one on the sign-in page that opens when they connect.
 
 ## When a hint comes with an answer
 
@@ -43,12 +43,12 @@ Answer the user's question first. Then say `setupHint.text` in one sentence at t
 
 ## Custom categories
 
-On Pro and higher (the plan of the unit's owner), a unit can have custom categories inside the standard ones, for rows a standard category lumps together (fuel, parts and service of a car). Offer one only when the user asks for it or a standard category clearly mixes things they want apart.
+A unit can have custom categories inside the standard ones, for rows a standard category lumps together (fuel, parts and service of a car). Offer one only when the user asks for it or a standard category clearly mixes things they want apart.
 
 - `list_categories` with the unit gives the standard categories with their ids and the unit's custom ones, each inside its standard one (`parentId`).
 - `create_category` creates one inside a standard expense or income category, with a name and a short description. Finometr's AI sorts new transactions into it by its name and description, so a name like "abc" is not picked. Category names and descriptions go to Finometr's AI provider.
 - Existing rows stay where they are. To move history, call `set_category` with a filter and `dryRun: true` first, tell the user how many rows it finds and show the sample, then call it without `dryRun` after their yes. One call changes up to 200 rows; more are refused.
-- A unit has at most 25 active custom categories on Pro and 50 on Team. `update_category` renames or moves one, `archive_category` archives it and `restore_category` brings it back.
+- If `create_category` is refused because of the plan or the number of categories, say so in one sentence, as the answer gives it. `update_category` renames or moves one, `archive_category` archives it and `restore_category` brings it back.
 
 ## How to talk about it
 
