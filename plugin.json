@@ -6,9 +6,9 @@
   "author": {
     "name": "FINOMETR LTD",
     "email": "support@finometr.com",
-    "url": "https://finometr.com"
+    "url": "https://finometr.com/?utm_source=chatgpt&utm_medium=app_directory"
   },
-  "homepage": "https://finometr.com/docs/assistants",
+  "homepage": "https://finometr.com/docs/assistants?utm_source=chatgpt&utm_medium=app_directory",
   "repository": "https://github.com/finometr-com/finometr-chatgpt-plugin",
   "license": "MIT",
   "keywords": [
@@ -33,8 +33,8 @@
           "Read",
           "Write"
         ],
-        "websiteURL": "https://finometr.com",
-        "supportURL": "https://finometr.com/support",
+        "websiteURL": "https://finometr.com/?utm_source=chatgpt&utm_medium=app_directory",
+        "supportURL": "https://finometr.com/support?utm_source=chatgpt&utm_medium=app_directory",
         "privacyPolicyURL": "https://finometr.com/privacy",
         "termsOfServiceURL": "https://finometr.com/terms",
         "defaultPrompt": [
