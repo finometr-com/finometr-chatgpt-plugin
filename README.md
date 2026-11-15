@@ -24,7 +24,7 @@ starts with 30 days of Pro, no credit card required.
 
 ## What the Finometr tools cover
 
-- **88 tools**: 32 that read and 56 that write, plus three prompts
+- **88 tools**: 33 that need Read and 55 that need Write, plus three prompts
   (`daily_briefing`, `get_started`, `weekly_review`). The write tools work
   only when the user ticks Write at sign-in.
 - **Periods**: `search_transactions` and `set_category` take a period of up
