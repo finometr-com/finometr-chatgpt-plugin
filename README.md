@@ -24,7 +24,7 @@ starts with 30 days of Pro, no credit card required.
 
 ## What the Finometr tools cover
 
-- **85 tools**: 32 that read and 53 that write, plus three prompts
+- **88 tools**: 32 that read and 56 that write, plus three prompts
   (`daily_briefing`, `get_started`, `weekly_review`). The write tools work
   only when the user ticks Write at sign-in.
 - **Periods**: `search_transactions` and `set_category` take a period of up
@@ -60,6 +60,20 @@ starts with 30 days of Pro, no credit card required.
   already imported count as duplicates. A manual or planned transaction
   identical to a live one is not added twice unless the user confirms a
   second one.
+
+## What's new in 0.2.2
+
+- E-mail confirmation with a code: while the account's e-mail is not
+  confirmed, answers carry `context.emailNotice`; `request_email_code` sends
+  a six-digit code to the account's own address and `confirm_email` takes
+  it. The setup skill describes it.
+- `get_account`, the account profile ChatGPT reads (`_meta`
+  `openai/profile`): a stable id and the account's e-mail, so the app shows
+  which Finometr account is connected.
+- Clearer descriptions for `import_statement` (a manual account first, at
+  most 500 rows a call, which its schema now says too), `get_link`
+  (connecting a new bank or the banks already connected) and `create_unit`
+  (what Personal is, and that units are limited).
 
 ## What's new in 0.2.1
 
