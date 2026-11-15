@@ -24,7 +24,7 @@ starts with 30 days of Pro, no credit card required.
 
 ## What the Finometr tools cover
 
-- **88 tools**: 33 that need Read and 55 that need Write, plus three prompts
+- **89 tools**: 33 that need Read and 56 that need Write, plus three prompts
   (`daily_briefing`, `get_started`, `weekly_review`). The write tools work
   only when the user ticks Write at sign-in.
 - **Periods**: `search_transactions` and `set_category` take a period of up
@@ -54,12 +54,25 @@ starts with 30 days of Pro, no credit card required.
   restore: coming back takes a new invitation from the Finometr app.
 - **Projects, hours and people**: projects with planned and actual income,
   costs and hours, time entries, and the people of the user's units with
-  their roles (owner, admin, editor, viewer). Bank connections and new
-  invitations are made in the Finometr app.
+  their roles (owner, admin, editor, viewer). Bank connections are made in
+  the Finometr app; `prepare_invite` prepares an invitation to a unit that
+  the user sends with one button in the app, nothing is sent from the chat.
 - **Duplicates**: a statement import is a dry run by default, and rows
   already imported count as duplicates. A manual or planned transaction
   identical to a live one is not added twice unless the user confirms a
   second one.
+
+## What's new in 0.2.3
+
+- `prepare_invite`: the assistant prepares an invitation to a unit and
+  gives a link to a page of the Finometr app, where the user sends it with
+  one button. Nothing is sent from the chat; the draft lasts 24 hours.
+- Plainer words in the listing and the skills, as on the site and in the
+  emails: alert level, before money runs short, accounts you keep by hand,
+  financing interest (not a loan request). The skills tell the assistant
+  which words to use with the user.
+- Review test cases: inviting from the chat is now a positive case
+  (`prepare_invite`); the negative case is sending without the app.
 
 ## What's new in 0.2.2
 

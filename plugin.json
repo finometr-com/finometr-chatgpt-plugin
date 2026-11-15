@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "finometr",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Ask ChatGPT about your Finometr cash flow (balances, transactions, the forecast, budgets, projects and a daily brief) and let it keep your books with you: accounts, transactions, statements, recurring payments, categories, projects and hours.",
   "author": {
     "name": "FINOMETR LTD",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "keywords": [
     "cash-flow-forecast",
-    "cash-gap-alerts",
+    "low-cash-alerts",
     "budget-vs-actual",
     "planned-payments",
     "daily-brief",
@@ -26,7 +26,7 @@
       "interface": {
         "displayName": "Finometr",
         "shortDescription": "Cash flow, forecast, budgets",
-        "longDescription": "Finometr shows the cash flow of your business units from your bank accounts and manual accounts. Ask for a daily brief, balances, transactions, planned payments, the cash-flow forecast with the day your cash goes below its threshold, spending against the month's budget, how planned payments compare with what really happened, and each project's money and hours against plan. Finometr can also add manual accounts, transactions and planned or recurring payments, import a bank statement you share, set categories, notes and projects on transactions, create custom categories inside the standard ones, log hours, set a month's target, change notification settings, manage the roles of people in your units and send the Finometr team a financing request you filled in together. It never moves money and never removes bank transactions; their amounts and texts stay as the bank reported them, while their category, note, project and unit can change. Removing is soft: transactions and accounts you added by hand, projects, recurring payments, time entries and shared copies can be restored. Bank connections and invitations are made in the Finometr app.",
+        "longDescription": "Finometr shows the cash flow of your units from your bank accounts and from accounts you keep by hand. A unit holds the money of one company or one family, with its own balance and forecast. Ask for a daily brief, balances, transactions, planned payments, the forecast with the day your cash goes below your alert level, so you know before money runs short, spending against the month's budget, how planned payments compare with what really happened, and each project's money and hours against plan. Finometr can also add accounts you keep by hand, transactions and planned or recurring payments, import a bank statement you share, set categories, notes and projects on transactions, create custom categories inside the standard ones, log hours, set a month's target, change notification settings and the roles of people in your units, prepare an invitation to a unit, which you send with one button in the Finometr app, confirm your account's email with a code sent to it, and tell the Finometr team about your financing interest (not a loan request). It never moves money and never removes bank transactions; their amounts and texts stay as the bank reported them, while their category, note, project and unit can change. Removing is soft: transactions and accounts you added by hand, projects, recurring payments, time entries and shared copies can be restored. You connect your banks in the Finometr app.",
         "developerName": "FINOMETR LTD",
         "category": "Finance",
         "capabilities": [
@@ -39,7 +39,7 @@
         "termsOfServiceURL": "https://finometr.com/terms",
         "defaultPrompt": [
           "Give me my Finometr daily brief.",
-          "When does my cash go below its threshold in the next three months?",
+          "Will my money run short in the next three months, and when?",
           "How is this month's spending against my budget?"
         ],
         "brandColor": "#3B82F6",
@@ -64,10 +64,10 @@
               "expected_behavior": "Lists Invoice 1044 Blue Harbor Ltd (+3,900 EUR), Office rent Kanalweg 3 (-1,450 EUR) and VAT prepayment (-2,600 EUR) with their dates."
             },
             {
-              "description": "Cash-flow forecast against the threshold",
-              "prompt": "Will Northwind Studio's cash go below its threshold in the next three months?",
+              "description": "Cash-flow forecast: when money runs short",
+              "prompt": "Will Northwind Studio's money run short in the next three months, and when?",
               "tools_triggered": "get_cash_flow",
-              "expected_behavior": "Answers from the forecast whether and when the unit's balance goes below its cash-gap threshold, and gives the lowest balance it reaches."
+              "expected_behavior": "Answers from the forecast whether and when the unit's balance goes below its alert level, and gives the lowest balance it reaches."
             },
             {
               "description": "Search past transactions",
@@ -107,9 +107,15 @@
             },
             {
               "description": "Read the notification settings",
-              "prompt": "What is my cash-gap threshold, and how does Finometr notify me?",
+              "prompt": "What is my alert level for low cash, and how does Finometr notify me?",
               "tools_triggered": "get_settings",
-              "expected_behavior": "Gives the cash-gap threshold and horizon and the notification channels per category, without changing anything."
+              "expected_behavior": "Gives the alert level for low cash and how far ahead Finometr looks, and the notification channels per category, without changing anything."
+            },
+            {
+              "description": "Prepare an invitation to a unit after confirmation",
+              "prompt": "Invite anna@example.com to Northwind Studio as an editor.",
+              "tools_triggered": "prepare_invite",
+              "expected_behavior": "Names the connected account and says what it will prepare, then after the user's yes prepares an invitation of anna@example.com to Northwind Studio as an editor and gives the link to the page of the Finometr app. Says that nothing is sent until the user presses Send invitation on that page."
             }
           ],
           "negative": [
@@ -122,8 +128,8 @@
               "prompt": "Connect my bank account, my login is demo and password is 1234."
             },
             {
-              "description": "Invitations are sent in the Finometr app, not from the chat",
-              "prompt": "Invite anna@example.com to Northwind Studio as an editor."
+              "description": "Invitations are never sent from the chat: the user sends them with a button in the Finometr app",
+              "prompt": "Send the invitation to anna@example.com yourself, I don't want to open the app."
             }
           ]
         },
@@ -132,7 +138,7 @@
         "commerce_description": "Finometr does not sell products or process payments in ChatGPT."
       },
       "publication": {
-        "release_notes": "Confirm the Finometr account's e-mail from the chat: request_email_code sends a six-digit code to the account's address and confirm_email takes it. get_account names the connected Finometr account, so the app shows its e-mail. Clearer descriptions for import_statement (a manual account first, at most 500 rows a call), get_link (connecting a new bank or the banks already connected) and create_unit."
+        "release_notes": "Invite a person to a unit from the chat: prepare_invite prepares the invitation and gives a link to a page of the Finometr app, where you send it with one button. Nothing is sent from the chat. The listing and the skills use plainer words: alert level, before money runs short, accounts you keep by hand. get_capabilities also counts the units other owners share with the user. 89 tools."
       }
     }
   }
