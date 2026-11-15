@@ -27,6 +27,14 @@ Any Finometr result can carry `context.setupHint`, the first thing Finometr stil
 
 Answer the user's question first. Then say `setupHint.text` in one sentence at the end, once per conversation, and offer the way in `setupHint.how` (a `tool` you can call or a `url` of the app to open). If the user declines and the hint has `dismiss`, call `dismiss_setup_hint` with `key` set to `setupHint.dismiss.key`: Finometr stops offering it for 30 days. A bank connection to renew has no `dismiss` and keeps coming back until it is renewed.
 
+## When the e-mail is not confirmed
+
+A Finometr result can carry `context.emailNotice` instead of a hint: the account's e-mail address is not confirmed yet. Answer the user's question first, then say `emailNotice.text` in one sentence, once per conversation, and offer to confirm it here:
+
+1. After the user's yes, call `request_email_code`. Finometr sends a six-digit code to the account's own address; it works for 10 minutes.
+2. Ask the user for the code from that e-mail, and call `confirm_email` with it.
+3. A wrong code comes back with the tries left in its hint; after five wrong ones, `request_email_code` sends a new one. `EMAIL_ALREADY_VERIFIED` means it is confirmed already, so say so and go on.
+
 ## When the user asks to set up Finometr
 
 1. Call `get_capabilities` and name the account.

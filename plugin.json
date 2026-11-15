@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "finometr",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Ask ChatGPT about your Finometr cash flow (balances, transactions, the forecast, budgets, projects and a daily brief) and let it keep your books with you: accounts, transactions, statements, recurring payments, categories, projects and hours.",
   "author": {
     "name": "FINOMETR LTD",
@@ -132,7 +132,7 @@
         "commerce_description": "Finometr does not sell products or process payments in ChatGPT."
       },
       "publication": {
-        "release_notes": "Custom categories inside the standard ones: create, rename, archive and restore them, and move earlier rows with set_category (a dry run first, up to 200 rows a call). Transaction searches take up to 366 days; a longer period is clipped to its last 366 days with a note, and a filtered search totals every matching row of the period, not only the page. Tool descriptions brought up to date with the server."
+        "release_notes": "Confirm the Finometr account's e-mail from the chat: request_email_code sends a six-digit code to the account's address and confirm_email takes it. get_account names the connected Finometr account, so the app shows its e-mail. Clearer descriptions for import_statement (a manual account first, at most 500 rows a call), get_link (connecting a new bank or the banks already connected) and create_unit."
       }
     }
   }
