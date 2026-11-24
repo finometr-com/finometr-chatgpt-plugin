@@ -24,13 +24,15 @@ starts with 30 days of Pro, no credit card required.
 
 ## What the Finometr tools cover
 
-- **89 tools**: 33 that need Read and 56 that need Write, plus three prompts
+- **94 tools**: 35 that need Read and 59 that need Write, plus three prompts
   (`daily_briefing`, `get_started`, `weekly_review`). The write tools work
   only when the user ticks Write at sign-in.
 - **Periods**: `search_transactions` and `set_category` take a period of up
   to 366 days. A longer one is clipped to its last 366 days, and the answer's
-  note says so. Spending by category and budget targets cover one calendar
-  month per call; the cash-flow forecast looks 30, 60 or 90 days ahead.
+  note says so. Spending by category covers one calendar month, or any
+  period up to a year with `from` and `to`; budget targets cover one
+  calendar month per call; the cash-flow forecast looks 30, 60 or 90 days
+  ahead.
 - **Search totals**: a search with a text, category, account or amount
   filter gives the net, money out and money in over every matching row of
   the period in its summary, not only the page; without a filter it sums
@@ -50,7 +52,7 @@ starts with 30 days of Pro, no credit card required.
   back, and a `restore_*` tool brings each back. Custom categories are
   archived, not deleted. Bank transactions are never removed, and their
   amounts and texts stay as the bank reported them; their category, note,
-  project and unit can change. Taking a person out of a unit has no
+  details, project and unit can change. Taking a person out of a unit has no
   restore: coming back takes a new invitation from the Finometr app.
 - **Projects, hours and people**: projects with planned and actual income,
   costs and hours, time entries, and the people of the user's units with
@@ -61,6 +63,19 @@ starts with 30 days of Pro, no credit card required.
   already imported count as duplicates. A manual or planned transaction
   identical to a live one is not added twice unless the user confirms a
   second one.
+
+## What's new in 0.2.4
+
+- Shared spending: a unit without accounts (a family, a project, a trip)
+  shows what was spent, and `get_unit_contributions` tells who paid how
+  much.
+- Spending by category covers any period up to a year.
+- `set_data` keeps the assistant's own details on a transaction, and
+  `search_transactions` finds them.
+- `get_playbook` and `set_playbook` keep notes for assistants on a unit or
+  project.
+- `move_transactions` moves up to 200 transactions in one call.
+- The alert level can be set for each unit.
 
 ## What's new in 0.2.3
 
