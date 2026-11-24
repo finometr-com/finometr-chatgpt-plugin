@@ -70,10 +70,10 @@ starts with 30 days of Pro, no credit card required.
   shows what was spent, and `get_unit_contributions` tells who paid how
   much.
 - Spending by category covers any period up to a year.
-- `set_data` keeps the assistant's own details on a transaction, and
+- `set_data` saves structured details on a transaction, and
   `search_transactions` finds them.
-- `get_playbook` and `set_playbook` keep notes for assistants on a unit or
-  project.
+- `get_playbook` and `set_playbook` keep notes on how a unit's or
+  project's records are kept.
 - `move_transactions` moves up to 200 transactions in one call.
 - The alert level can be set for each unit.
 
